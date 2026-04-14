@@ -5,8 +5,6 @@ const Footer = () => {
     return (
         <footer className="bg-[#02261A] text-white py-16 px-8 md:px-24">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-
-                {/* Coluna 1: Logo e Social */}
                 <div className="space-y-6">
                     <div>
                         <h2 className="text-3xl font-bold tracking-tighter">ECOFLUX</h2>
@@ -23,8 +21,6 @@ const Footer = () => {
                         ))}
                     </div>
                 </div>
-
-                {/* Coluna 2: Menu */}
                 <div className="space-y-6">
                     <h3 className="font-bold uppercase tracking-widest text-sm">Menu</h3>
                     <ul className="space-y-4 text-gray-400 text-sm">
@@ -34,8 +30,6 @@ const Footer = () => {
                         <li className="hover:text-white cursor-pointer">Sobre</li>
                     </ul>
                 </div>
-
-                {/* Coluna 3: Legal */}
                 <div className="space-y-6">
                     <h3 className="font-bold uppercase tracking-widest text-sm">Legal</h3>
                     <ul className="space-y-4 text-gray-400 text-sm">
@@ -44,8 +38,6 @@ const Footer = () => {
                         <li className="hover:text-white cursor-pointer">Acessibilidade</li>
                     </ul>
                 </div>
-
-                {/* Coluna 4: Contato */}
                 <div className="space-y-6">
                     <h3 className="font-bold uppercase tracking-widest text-sm">Contato</h3>
                     <ul className="space-y-4 text-sm">
