@@ -1,8 +1,18 @@
 import React from "react"
 
+import ImagemPrincipalComponent from "./components/ImagemPrincipal"
+import ProblematicaComponent from "./components/Problematica"
+import CardsComponent from "./components/Cards"
+import SolucaoComponent from "./components/Solucao"
+
 const HomePage = () => {
     return (
-        <h1>Home</h1>
+        <>
+            <ImagemPrincipalComponent />
+            <ProblematicaComponent />
+            <CardsComponent />
+            <SolucaoComponent />
+        </>
     )
 }
 
