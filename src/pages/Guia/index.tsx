@@ -1,9 +1,13 @@
-import React from "react"
+import React from "react";
+// Importa o componente que contém todo o seu código
+import GuiaBiodigestor from "./components/conceito_biodigestor"; 
 
-const GuiaPage = () => {
+const GuiaPage: React.FC = () => {
     return (
-        <h1>Guia</h1>
-    )
+        <>
+            <GuiaBiodigestor />
+        </>
+    );
 }
 
-export default GuiaPage
+export default GuiaPage;
