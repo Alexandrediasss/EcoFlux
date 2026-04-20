@@ -1,5 +1,4 @@
 import React from 'react';
-// Subimos 3 níveis para chegar na src e entrar na estrutura de assets/Guia
 import imagemBiodigestor from '../../../assets/Guia/Container.svg';
 
 const GuiaBiodigestor: React.FC = () => {
@@ -24,13 +23,11 @@ const GuiaBiodigestor: React.FC = () => {
           <div className="relative flex justify-center order-1 md:order-2 w-full max-w-[400px] md:max-w-full mx-auto">
             <div className="bg-white p-6 md:p-8 rounded-[30px] md:rounded-[40px] shadow-2xl relative z-10 w-full flex items-center justify-center">
               
-              {/* Usando a variável com o caminho corrigido */}
               <img 
                 src={imagemBiodigestor} 
                 alt="Ilustração do Biodigestor" 
                 className="w-full h-auto object-contain"
               />
-              
               
             </div>
           </div>
