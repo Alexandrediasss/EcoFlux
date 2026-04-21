@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
                         <div className="w-10 h-1 bg-[#00D99E] mt-1"></div>
                     </div>
                     <p className="text-gray-400 text-sm leading-relaxed">
-                        O projeto Sinalize é uma plataforma web que busca mitigar as barreiras de comunicação enfrentadas pela comunidade surda, promovendo inclusão e acessibilidade. Juntos por um futuro mais verde.
+                        O projeto EcoFlux visa criar um sistema para monitorar e simular a produção de energia elétrica a partir de resíduos orgânicos, usando um biodigestor caseiro como base para experimentos.
                     </p>
                     <div className="flex gap-4">
                         {[Mail, Mail, Mail, Mail].map((Icon, i) => (
