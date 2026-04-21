@@ -70,7 +70,7 @@ const NavBar: React.FC = () => {
                 </div>
             )}
         </nav>
-    )
+    );
 }
 
-export default NavBar
+export default NavBar;
