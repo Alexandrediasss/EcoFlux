@@ -1,9 +1,18 @@
-import React from "react"
+import React from "react";
+import GuiaBiodigestor from "./components/inicio"; 
+import Funcionamento from "./components/funcionamento";
+import Colocar from "./components/colocar";
+import Final from "./components/final";
 
-const GuiaPage = () => {
+const GuiaPage: React.FC = () => {
     return (
-        <h1>Guia</h1>
-    )
+        <>
+            <GuiaBiodigestor />
+            <Funcionamento />
+            <Colocar />
+            <Final />
+        </>
+    );
 }
 
-export default GuiaPage
+export default GuiaPage;
