@@ -1,9 +1,12 @@
-import React from "react"
+import React from "react";
+import Cards from "./components/cards"; 
 
-const AlertaPage = () => {
+const AlertaPage: React.FC = () => {
     return (
-        <h1>Alerta</h1>
-    )
+        <div className="bg-[#f8fcf8] min-h-screen">
+            <Cards />
+        </div>
+    );
 }
 
-export default AlertaPage
+export default AlertaPage;
