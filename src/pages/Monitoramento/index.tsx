@@ -1,8 +1,16 @@
 import React from "react"
 
+import GuiaDeMonitoramentoComponent from "./components/GuiaDeMonitoramento"
+import IndicadoresDesempenhoComponent from "./components/IndicadoresDesempenho"
+import VelocidadeGasComponent from "./components/VelocidadeGas"
+
 const MonitoramentoPage = () => {
     return (
-        <h1>Monitoramento</h1>
+        <>
+            <GuiaDeMonitoramentoComponent />
+            <IndicadoresDesempenhoComponent />
+            <VelocidadeGasComponent />
+        </>
     )
 }
 
