@@ -19,7 +19,7 @@ const GuiaDeMonitoramentoComponent: React.FC = () => {
                 </div>
                 <button
                     onClick={handleExportar}
-                    className="bg-[#133524] text-white px-8 py-3 text-xs md:text-sm font-bold uppercase tracking-wider hover:bg-[#1E4D36] transition-colors shrink-0"
+                    className="bg-[#133524] text-white px-8 py-3 text-xs md:text-sm font-bold uppercase tracking-wider hover:bg-[#1E4D36] transition-colors shrink-0 cursor-pointer"
                 >
                     Exportar Dados
                 </button>

@@ -22,7 +22,7 @@ const VelocidadeGasComponent: React.FC = () => {
                                 <button 
                                     key={p}
                                     onClick={() => setPeriodo(p)}
-                                    className={`px-5 py-2 transition-colors ${
+                                    className={`px-5 py-2 transition-colors cursor-pointer ${
                                         periodo === p 
                                         ? "bg-[#133524] text-white" 
                                         : "bg-transparent text-[#133524] hover:bg-[#133524]/10"
@@ -79,7 +79,7 @@ const VelocidadeGasComponent: React.FC = () => {
                             <span>1.2 BAR</span>
                         </div>
                     </div>
-                    <button className="w-full border border-[#133524] py-3.5 mt-2 text-[#133524] text-xs font-bold uppercase tracking-widest hover:bg-[#133524] hover:text-white transition-all flex justify-center items-center gap-2">
+                    <button className="cursor-pointer w-full border border-[#133524] py-3.5 mt-2 text-[#133524] text-xs font-bold uppercase tracking-widest hover:bg-[#133524] hover:text-white transition-all flex justify-center items-center gap-2">
                         <HelpCircle size={16} />
                         Não Sei
                     </button>
