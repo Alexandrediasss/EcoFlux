@@ -17,10 +17,12 @@ const NavBar: React.FC = () => {
 
     const isActive = (path: string): boolean => location.pathname === path
 
+    const isHome = location.pathname === "/"
+
     return (
-        <nav className="fixed top-4 md:top-[43px] left-1/2 -translate-x-1/2 w-[95%] max-w-[1280px] min-h-[70px] md:h-[106px] 
-                        bg-[#1A2412]/85 backdrop-blur-md rounded-3xl md:rounded-[9999px] border border-white/12 
-                        flex items-center justify-between px-6 md:px-8 z-50 transition-all">
+        <nav className={`fixed top-4 md:top-[43px] left-1/2 -translate-x-1/2 w-[95%] max-w-[1280px] min-h-[70px] md:h-[106px] 
+                        ${isHome ? "bg-[#1A2412]/85" : "bg-[#022411]/80"} backdrop-blur-md rounded-3xl md:rounded-[9999px] border border-white/12 
+                        flex items-center justify-between px-6 md:px-8 z-50 transition-colors duration-500`}>
 
             <div className="flex items-center gap-3">
                 <img
@@ -30,6 +32,7 @@ const NavBar: React.FC = () => {
                 />
                 <span className="text-white font-bold tracking-widest text-sm md:text-base">EcoFlux</span>
             </div>
+            
             <div className="hidden lg:flex items-center gap-2">
                 {routes.map((route) => (
                     <Link
@@ -45,14 +48,18 @@ const NavBar: React.FC = () => {
                     </Link>
                 ))}
             </div>
+            
             <button
                 className="lg:hidden text-white p-2"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
+            
             {isOpen && (
-                <div className="absolute top-[80px] md:top-[110px] left-0 w-full bg-[#1A2412] border border-white/10 rounded-2xl p-4 flex flex-col gap-2 lg:hidden shadow-2xl">
+                <div className={`absolute top-[80px] md:top-[110px] left-0 w-full 
+                                ${isHome ? "bg-[#1A2412]" : "bg-[#022411]"} 
+                                border border-white/10 rounded-2xl p-4 flex flex-col gap-2 lg:hidden shadow-2xl transition-colors duration-300`}>
                     {routes.map((route) => (
                         <Link
                             key={route.path}
@@ -70,7 +77,7 @@ const NavBar: React.FC = () => {
                 </div>
             )}
         </nav>
-    );
+    )
 }
 
-export default NavBar;
+export default NavBar
