@@ -1,11 +1,16 @@
 import React from "react";
-// Importa o componente que contém todo o seu código
-import GuiaBiodigestor from "./components/inicio.tsx"; 
+import GuiaBiodigestor from "./components/inicio"; 
+import Funcionamento from "./components/funcionamento";
+import Colocar from "./components/colocar";
+import Final from "./components/final";
 
 const GuiaPage: React.FC = () => {
     return (
         <>
             <GuiaBiodigestor />
+            <Funcionamento />
+            <Colocar />
+            <Final />
         </>
     );
 }
