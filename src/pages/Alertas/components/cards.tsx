@@ -106,7 +106,7 @@ const Cards: React.FC = () => {
             <button
               key={cat.id}
               onClick={() => setFiltroAtivo(cat.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-lg transition-all border ${
+              className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-lg transition-all border ${
                 filtroAtivo === cat.id 
                   ? 'bg-white text-[#1a3d2c] border-[#1a3d2c] border-b-4 shadow-md scale-105' 
                   : 'bg-white/60 backdrop-blur-sm text-gray-400 border-gray-100'
