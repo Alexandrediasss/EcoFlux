@@ -5,7 +5,7 @@ const Funcionamento: React.FC = () => {
   return (
     <section className="py-15 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-black text-[#344e41] uppercase">
+        <h2 className="text-4xl md:text-5xl font-black text-[#2d5a27] uppercase">
           Processo De <br /> Funcionamento
         </h2>
       </div>
