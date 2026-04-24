@@ -1,7 +1,14 @@
 import React from "react"
 import { TrendingUp, Home } from "lucide-react"
+import { useEcoFluxCalculations } from "../../../hooks/useEcoFluxCalculations"
 
 const IndicadoresDesempenhoComponent: React.FC = () => {
+    const { sensorData, metrics } = useEcoFluxCalculations();
+
+    const temperaturaAtual = sensorData ? `${sensorData.temperaturaC.toFixed(1)}°C` : "--°C";
+    const gasProduzido = metrics ? metrics.volumeGasM3.toFixed(2) : "--";
+    const energiaAtual = metrics ? metrics.energiaKwh.toFixed(2) : "--";
+
     return (
         <section className="w-full px-6 md:px-24 py-8 bg-[#F8F9F6]">
             <div className="max-w-7xl mx-auto">
@@ -18,7 +25,7 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
                     </div>
                     <div className="md:col-span-1">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Valor</span>
-                        <div className="text-[#133524] text-4xl font-black">28°C</div>
+                        <div className="text-[#133524] text-4xl font-black">{temperaturaAtual}</div>
                     </div>
                     <div className="md:col-span-1 w-full max-w-[200px]">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Status</span>
@@ -34,7 +41,7 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
 
                     <div className="md:col-span-1 text-xs text-gray-500 font-medium">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Impacto</span>
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        Mantém o reator em temperatura mesofílica ideal.
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-center border-b border-gray-200 py-6">
@@ -45,42 +52,41 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
                     <div className="md:col-span-1">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Valor</span>
                         <div className="text-[#133524] text-4xl font-black">
-                            1.5 m<sup className="text-xl">3</sup>
+                            {gasProduzido} m<sup className="text-xl">3</sup>
                         </div>
                     </div>
                     <div className="md:col-span-1 flex items-center gap-2">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block">Status</span>
                         <span className="bg-[#D1F2D9] text-[#133524] px-2 py-1 rounded-md text-xs font-bold">
-                            +12%
+                            Volume Seguro
                         </span>
-                        <span className="text-xs text-gray-500">ficção</span>
                     </div>
                     <div className="md:col-span-1 flex items-start gap-2 text-xs text-[#4F6D17] font-bold">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block">Impacto</span>
                         <TrendingUp size={16} className="shrink-0 mt-0.5" />
-                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        Geração constante de pressão interna.
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-center border-b border-gray-200 py-6">
                     <div className="md:col-span-1">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Indicador</span>
-                        <h4 className="text-[#133524] text-lg font-bold">Energia Gerada</h4>
+                        <h4 className="text-[#133524] text-lg font-bold">Energia Estimada</h4>
                     </div>
                     <div className="md:col-span-1">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Valor</span>
-                        <div className="text-[#133524] text-4xl font-black">9 kWh</div>
+                        <div className="text-[#133524] text-4xl font-black">{energiaAtual} kWh</div>
                     </div>
                     <div className="md:col-span-1">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Status</span>
                         <span className="bg-[#133524] text-white px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest">
-                            Máx Performance
+                            Em tempo real
                         </span>
                     </div>
                     <div className="md:col-span-1 flex items-start gap-2 text-xs text-gray-600 font-medium">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block">Impacto</span>
                         <Home size={16} className="shrink-0 text-[#4F6D17] mt-0.5" />
                         <span>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>xxxxx
+                            Potencial comercial do material estocado.
                         </span>
                     </div>
                 </div>

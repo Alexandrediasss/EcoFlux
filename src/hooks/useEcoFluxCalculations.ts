@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { io } from 'socket.io-client'
 
 export interface SensorData {
-  metanoRaw: number     
-  temperaturaC: number  
-  pressaoHpa: number   
-  distanciaCm: number  
+  metanoRaw: number
+  temperaturaC: number
+  pressaoHpa: number
+  distanciaCm: number
 }
 
 export interface EcoFluxMetrics {
@@ -13,6 +13,7 @@ export interface EcoFluxMetrics {
   massaTotalKg: number
   energiaTermicaJoules: number
   energiaKwh: number
+  volumeGasM3: number
 }
 
 export function useEcoFluxCalculations() {
@@ -47,7 +48,6 @@ export function useEcoFluxCalculations() {
     
     const fracaoMetano = Math.min(Math.max(sensorData.metanoRaw / 1023, 0), 1)
 
-    // Cálculos
     const n = (pressaoPascal * volumeGas) / (Z * R * tempKelvin)
     const massaTotal = n * M_MISTURA
     const pciMistura = fracaoMetano * PCI_CH4
@@ -58,7 +58,8 @@ export function useEcoFluxCalculations() {
       mols: n,
       massaTotalKg: massaTotal,
       energiaTermicaJoules: qTotal,
-      energiaKwh: energiaKwh
+      energiaKwh: energiaKwh,
+      volumeGasM3: volumeGas 
     })
   }, [sensorData])
 
