@@ -9,6 +9,10 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
     const gasProduzido = metrics ? metrics.volumeGasM3.toFixed(2) : "--";
     const energiaAtual = metrics ? metrics.energiaKwh.toFixed(2) : "--";
 
+    const isConnected = !!sensorData; 
+    const statusText = isConnected ? "Em tempo real" : "Inativo";
+    const statusStyle = isConnected ? "bg-[#133524] text-white" : "bg-gray-200 text-gray-500";
+
     return (
         <section className="w-full px-6 md:px-24 py-8 bg-[#F8F9F6]">
             <div className="max-w-7xl mx-auto">
@@ -40,8 +44,8 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
                     </div>*/}
                     <div className="md:col-span-1">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Status</span>
-                        <span className="bg-[#133524] text-white px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest">
-                            Em tempo real
+                        <span className={`${statusStyle} px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest transition-colors`}>
+                            {statusText}
                         </span>
                     </div>
 
@@ -69,8 +73,8 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
                     </div>*/}
                     <div className="md:col-span-1">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Status</span>
-                        <span className="bg-[#133524] text-white px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest">
-                            Em tempo real
+                        <span className={`${statusStyle} px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest transition-colors`}>
+                            {statusText}
                         </span>
                     </div>
                     <div className="md:col-span-1 flex items-start gap-2 text-xs text-[#4F6D17] font-bold">
@@ -90,8 +94,8 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
                     </div>
                     <div className="md:col-span-1">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Status</span>
-                        <span className="bg-[#133524] text-white px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest">
-                            Em tempo real
+                        <span className={`${statusStyle} px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest transition-colors`}>
+                            {statusText}
                         </span>
                     </div>
                     <div className="md:col-span-1 flex items-start gap-2 text-xs text-gray-600 font-medium">
