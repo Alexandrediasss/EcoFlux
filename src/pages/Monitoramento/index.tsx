@@ -1,5 +1,3 @@
-import React from "react"
-
 import GuiaDeMonitoramentoComponent from "./components/GuiaDeMonitoramento"
 import IndicadoresDesempenhoComponent from "./components/IndicadoresDesempenho"
 import VelocidadeGasComponent from "./components/VelocidadeGas"
