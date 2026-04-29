@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
                         <Link to="/" onClick={scrollToTop} className="hover:text-white transition-colors">Início</Link>
                         <Link to="/guia" onClick={scrollToTop} className="hover:text-white transition-colors">Guia</Link>
                         <Link to="/monitoramento" onClick={scrollToTop} className="hover:text-white transition-colors">Monitoramento</Link>
-                        <Link to="/sobre" onClick={scrollToTop} className="hover:text-white transition-colors">Sobre</Link>
+                        <Link to="/alerta" onClick={scrollToTop} className="hover:text-white transition-colors">Alertas</Link>
                     </ul>
                 </div>
                 <div className="space-y-6">

@@ -12,7 +12,6 @@ const NavBar: React.FC = () => {
         { name: "Guia", path: "/guia" },
         { name: "Monitoramento", path: "/monitoramento" },
         { name: "Alertas", path: "/alerta" },
-        { name: "Sobre", path: "/sobre" },
     ]
 
     const isActive = (path: string): boolean => location.pathname === path
