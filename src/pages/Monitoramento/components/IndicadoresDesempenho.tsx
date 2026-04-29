@@ -14,7 +14,7 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
     const statusStyle = isConnected ? "bg-[#133524] text-white" : "bg-gray-200 text-gray-500";
 
     return (
-        <section className="w-full px-6 md:px-24 py-8 bg-[#F8F9F6]">
+        <section id="tabela-ecoflux" className="w-full px-6 md:px-24 py-8 bg-[#F8F9F6]">
             <div className="max-w-7xl mx-auto">
                 <div className="hidden md:grid grid-cols-4 gap-6 border-b border-gray-200 pb-4 mb-6">
                     <h3 className="text-[10px] font-bold text-[#4A5043] uppercase tracking-widest">Indicadores Chave de Desempenho</h3>

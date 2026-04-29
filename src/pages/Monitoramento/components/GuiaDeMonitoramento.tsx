@@ -1,8 +1,41 @@
-import React from "react"
+import React, { useState } from "react"
+import { toPng } from "html-to-image"
+import jsPDF from "jspdf"
+import logo from "../../../assets/Navegação/logo.jpeg"
 
 const GuiaDeMonitoramentoComponent: React.FC = () => {
-    const handleExportar = () => {
-        console.log("Exportar dados...")
+    const [gerandoPdf, setGerandoPdf] = useState(false);
+
+    const handleExportar = async () => {
+        const elemento = document.getElementById("tabela-ecoflux");
+        
+        if (!elemento) {
+            console.error("Tabela não encontrada!");
+            return;
+        }
+
+        try {
+            setGerandoPdf(true);
+
+            const imgData = await toPng(elemento, {
+                backgroundColor: "#F8F9F6", 
+                pixelRatio: 2 
+            });
+
+            const pdf = new jsPDF("p", "mm", "a4");
+            
+            const imgProps = pdf.getImageProperties(imgData);
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+            pdf.addImage(imgData, "PNG", 0, 10, pdfWidth, pdfHeight);
+            pdf.save("Relatorio_Biodigestor.pdf");
+
+        } catch (error) {
+            console.error("Erro ao gerar PDF: ", error);
+        } finally {
+            setGerandoPdf(false);
+        }
     }
 
     return (
@@ -11,19 +44,15 @@ const GuiaDeMonitoramentoComponent: React.FC = () => {
                 <div className="flex flex-col gap-2">
                     <h1 className="text-[#133524] text-3xl md:text-[42px] font-black uppercase tracking-tight">
                         Guia de Monitoramento
-                    </h1>  
-                    <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold text-[#4A5043] uppercase tracking-wider">
-                        <div className="w-2.5 h-2.5 bg-[#4F6D17] shrink-0"></div>
-                        <span>Sistema do Biodigestor • Última atualização: 14:32:05</span>
-                    </div>
+                    </h1> 
                 </div>
                 <button 
                     onClick={handleExportar}
-                    className="bg-[#133524] text-white px-8 py-3 text-xs md:text-sm font-bold uppercase tracking-wider hover:bg-[#1E4D36] transition-colors shrink-0"
+                    disabled={gerandoPdf}
+                    className="bg-[#133524] text-white px-8 py-3 text-xs md:text-sm font-bold uppercase tracking-wider hover:bg-[#1E4D36] transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    Exportar Dados
+                    {gerandoPdf ? "Gerando PDF..." : "Exportar Dados"}
                 </button>
-                
             </div>
         </section>
     )
