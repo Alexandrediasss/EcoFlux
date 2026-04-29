@@ -27,7 +27,7 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Valor</span>
                         <div className="text-[#133524] text-4xl font-black">{temperaturaAtual}</div>
                     </div>
-                    <div className="md:col-span-1 w-full max-w-[200px]">
+                    {/*<div className="md:col-span-1 w-full max-w-[200px]">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Status</span>
                         <div className="flex justify-between text-[10px] font-bold text-[#133524] mb-1">
                             <span>25°C MIN</span>
@@ -37,6 +37,12 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
                             <div className="h-full bg-[#4F6D17] w-[20%]"></div> 
                         </div>
                         <div className="text-[10px] font-bold text-[#4F6D17] uppercase">Status: Estável</div>
+                    </div>*/}
+                    <div className="md:col-span-1">
+                        <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Status</span>
+                        <span className="bg-[#133524] text-white px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest">
+                            Em tempo real
+                        </span>
                     </div>
 
                     <div className="md:col-span-1 text-xs text-gray-500 font-medium">
@@ -55,10 +61,16 @@ const IndicadoresDesempenhoComponent: React.FC = () => {
                             {gasProduzido} m<sup className="text-xl">3</sup>
                         </div>
                     </div>
-                    <div className="md:col-span-1 flex items-center gap-2">
+                    {/*<div className="md:col-span-1 flex items-center gap-2">
                         <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block">Status</span>
                         <span className="bg-[#D1F2D9] text-[#133524] px-2 py-1 rounded-md text-xs font-bold">
                             Volume Seguro
+                        </span>
+                    </div>*/}
+                    <div className="md:col-span-1">
+                        <span className="md:hidden text-[10px] font-bold text-[#4A5043] uppercase tracking-widest block mb-1">Status</span>
+                        <span className="bg-[#133524] text-white px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest">
+                            Em tempo real
                         </span>
                     </div>
                     <div className="md:col-span-1 flex items-start gap-2 text-xs text-[#4F6D17] font-bold">
