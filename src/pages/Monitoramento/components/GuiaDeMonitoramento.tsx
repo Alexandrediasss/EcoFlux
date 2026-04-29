@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 import jsPDF from "jspdf"
 import autoTable from "jspdf-autotable"
+import { toPng } from "html-to-image" 
 import logo from "../../../assets/Navegação/logo.jpeg"
 import { useEcoFluxCalculations } from "../../../hooks/useEcoFluxCalculations"
 
 const GuiaDeMonitoramentoComponent: React.FC = () => {
     const [gerandoPdf, setGerandoPdf] = useState(false);
-    
     const { sensorData, metrics } = useEcoFluxCalculations();
 
     const criarLogoArredondada = async (imgSrc: string): Promise<string> => {
@@ -49,39 +49,47 @@ const GuiaDeMonitoramentoComponent: React.FC = () => {
             pdf.setFont("helvetica", "bold");
             pdf.setFontSize(16);
             pdf.setTextColor(19, 53, 36); 
-            pdf.text("EcoFlux | Guia de Monitoramento", 30, 18);
+            pdf.text("EcoFlux | Relatório de Monitoramento", 30, 18);
             
             pdf.setDrawColor(200, 200, 200);
             pdf.line(15, 25, 195, 25);
 
             autoTable(pdf, {
-                startY: 35, 
+                startY: 35,
                 head: [['Indicador', 'Valor Atual', 'Status', 'Impacto no Sistema']],
                 body: [
                     ['Temperatura', temperaturaAtual, statusText, 'Mantém o reator em temperatura mesofílica ideal.'],
                     ['Gás Produzido', gasProduzido, statusText, 'Geração constante de pressão interna.'],
                     ['Energia Estimada', energiaAtual, statusText, 'Potencial comercial do material estocado.']
                 ],
-                headStyles: {
-                    fillColor: [19, 53, 36], 
-                    textColor: [255, 255, 255],
-                    fontStyle: 'bold',
-                    halign: 'center'
-                },
-                bodyStyles: {
-                    textColor: [50, 50, 50],
-                    halign: 'center',
-                    valign: 'middle'
-                },
-                columnStyles: {
-                    0: { fontStyle: 'bold' },
-                    3: { halign: 'left' } 
-                },
-                alternateRowStyles: {
-                    fillColor: [248, 249, 246] 
-                },
+                headStyles: { fillColor: [19, 53, 36], textColor: [255, 255, 255], fontStyle: 'bold', halign: 'center' },
+                bodyStyles: { textColor: [50, 50, 50], halign: 'center', valign: 'middle' },
+                columnStyles: { 0: { fontStyle: 'bold' }, 3: { halign: 'left' } },
+                alternateRowStyles: { fillColor: [248, 249, 246] },
                 theme: 'grid'
             });
+
+            const finalY = (pdf as any).lastAutoTable.finalY || 80;
+            
+            const elementoGrafico = document.getElementById("grafico-projecao");
+            
+            if (elementoGrafico) {
+                pdf.setFontSize(14);
+                pdf.setTextColor(19, 53, 36);
+
+                const imgGrafico = await toPng(elementoGrafico, {
+                    backgroundColor: "#F8F9F6",
+                    pixelRatio: 2 
+                });
+
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const margem = 15;
+                const larguraImg = pdfWidth - (margem * 2);
+                const imgProps = pdf.getImageProperties(imgGrafico);
+                const alturaImg = (imgProps.height * larguraImg) / imgProps.width;
+
+                pdf.addImage(imgGrafico, "PNG", margem, finalY + 20, larguraImg, alturaImg);
+            }
 
             pdf.save("Relatorio_Biodigestor.pdf");
 
@@ -105,7 +113,7 @@ const GuiaDeMonitoramentoComponent: React.FC = () => {
                     disabled={gerandoPdf}
                     className="bg-[#133524] cursor-pointer text-white px-8 py-3 text-xs md:text-sm font-bold uppercase tracking-wider hover:bg-[#1E4D36] transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {gerandoPdf ? "Gerando PDF..." : "Exportar Dados"}
+                    {gerandoPdf ? "Processando Relatório..." : "Exportar Relatório"}
                 </button>
             </div>
         </section>

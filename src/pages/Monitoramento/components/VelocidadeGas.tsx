@@ -26,7 +26,7 @@ const VelocidadeGasComponent: React.FC = () => {
         <section className="w-full px-6 md:px-24 py-12 bg-[#F8F9F6]">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
                 
-                <div className="lg:col-span-2 flex flex-col">
+                <div id="grafico-projecao" className="lg:col-span-2 flex flex-col p-4 bg-[#F8F9F6] rounded-md">
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12 gap-6">
                         <div>
                             <h3 className="text-[#133524] text-xl md:text-[22px] font-bold uppercase tracking-wide mb-1">
