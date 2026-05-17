@@ -46,7 +46,7 @@ const GuiaBiodigestor: React.FC = () => {
         <section className="mt-32 md:mt-48 max-w-3xl text-center md:text-left pb-20">
           <h2 className="text-3xl md:text-5xl font-black text-[#2d5a27] mb-8 tracking-tighter">O QUE É</h2>
           <p className="text-xl md:text-2xl font-medium leading-relaxed text-gray-700/90">
-            Um sistema que transforma resíduos orgânicos em gás e fertilizante. Ele funciona por meio da decomposição da matéria sem presença de oxigênio. O gás gerado pode ser usado como energia de forma sustentável.
+            Um sistema que transforma resíduos orgânicos em gás. Ele funciona por meio da decomposição da matéria sem presença de oxigênio. O gás gerado pode ser usado como energia de forma sustentável.
           </p>
         </section>
       </main>
