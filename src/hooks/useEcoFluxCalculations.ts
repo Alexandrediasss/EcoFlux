@@ -20,7 +20,8 @@ export function useEcoFluxCalculations() {
   const [sensorData, setSensorData] = useState<SensorData | null>(null)
   const [metrics, setMetrics] = useState<EcoFluxMetrics | null>(null)
 
-  const AREA_BASE_REATOR_M2 = 2.0
+  // AQUI: Área corrigida para um galão de 15cm de raio!
+  const AREA_BASE_REATOR_M2 = 0.070685
   const Z = 0.99
   const R = 8.314
   const M_MISTURA = 0.028
@@ -43,7 +44,17 @@ export function useEcoFluxCalculations() {
 
     const tempKelvin = sensorData.temperaturaC + 273.15
     const pressaoPascal = sensorData.pressaoHpa * 100
-    const alturaGasMetros = sensorData.distanciaCm / 100
+    
+    // 1. Declaramos a variável e pegamos o valor original primeiro
+    let distanciaCorrigida = sensorData.distanciaCm
+    
+    // 2. Fazemos a verificação de segurança (trava em 2cm se bugar)
+    if (distanciaCorrigida <= 0 || distanciaCorrigida > 100) {
+      distanciaCorrigida = 50 
+    }
+    
+    // 3. Calculamos a altura usando a distância JÁ CORRIGIDA!
+    const alturaGasMetros = distanciaCorrigida / 100
     const volumeGas = AREA_BASE_REATOR_M2 * alturaGasMetros
     
     const fracaoMetano = Math.min(Math.max(sensorData.metanoRaw / 1023, 0), 1)
