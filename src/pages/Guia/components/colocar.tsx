@@ -34,7 +34,6 @@ const Colocar: React.FC = () => {
 
         {itens.map((item, index) => (
           <div key={index} className="grid grid-cols-12 p-8 border-b border-gray-50 items-center hover:bg-gray-50 transition-colors">
-            {/* Coluna Tipos */}
             <div className="col-span-12 md:col-span-8 flex gap-6 px-4 mb-4 md:mb-0">
               <div className="w-16 h-16 bg-[#c7e596] rounded-2xl flex items-center justify-center text-3xl shrink-0">
                 {item.icon}
